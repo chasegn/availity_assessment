@@ -61,6 +61,7 @@ following data points are included in the file:
 - Insurance Company (string)
 
 src/main/java/com/chasegn/CSVHarvester
+
 src/main/java/com/chasegn/EnrollmentRecord
 
 ==============================================
