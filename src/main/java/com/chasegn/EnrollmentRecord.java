@@ -1,13 +1,19 @@
 package com.chasegn;
 
-import com.sun.deploy.util.StringUtils;
-
 public class EnrollmentRecord implements Comparable<EnrollmentRecord>{
     private String userId;
     private String fname;
     private String lname;
     private int version;
     private String insuranceCompany;
+
+    public EnrollmentRecord(String userId, String fname, String lname, int version, String insuranceCompany) {
+        this.userId = userId;
+        this.fname = fname;
+        this.lname = lname;
+        this.version = version;
+        this.insuranceCompany = insuranceCompany;
+    }
 
     public String getUserId() {
         return userId;
@@ -47,6 +53,17 @@ public class EnrollmentRecord implements Comparable<EnrollmentRecord>{
 
     public void setInsuranceCompany(String insuranceCompany) {
         this.insuranceCompany = insuranceCompany;
+    }
+
+    @Override
+    public String toString() {
+        return "EnrollmentRecord{" +
+                "userId='" + userId + '\'' +
+                ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", version=" + version +
+                ", insuranceCompany='" + insuranceCompany + '\'' +
+                '}';
     }
 
     @Override
