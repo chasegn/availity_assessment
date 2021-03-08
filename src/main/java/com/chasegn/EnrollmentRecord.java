@@ -1,6 +1,6 @@
 package com.chasegn;
 
-public class EnrollmentRecord implements Comparable<EnrollmentRecord>{
+public class EnrollmentRecord implements Comparable<EnrollmentRecord> {
     private String userId;
     private String fname;
     private String lname;
