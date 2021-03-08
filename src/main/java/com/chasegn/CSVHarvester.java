@@ -1,5 +1,7 @@
 package com.chasegn;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -24,10 +26,23 @@ public class CSVHarvester {
     }
 
     public void writeFiles() {
-        for (Map<String, EnrollmentRecord> submap : insuranceCompanyRecords.values()) {
-            for (Map.Entry<String, EnrollmentRecord> entry : submap.entrySet()) {
-                System.out.println(entry.getValue().toString());
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<String, Map<String, EnrollmentRecord>> submap : insuranceCompanyRecords.entrySet()) {
+
+            for (Map.Entry<String, EnrollmentRecord> entry : submap.getValue().entrySet()) {
+                sb.append(entry.getValue().toString());
+                sb.append("\n");
             }
+
+            try {
+                Files.write(
+                        Paths.get("src/main/resources/output/" + submap.getKey() + ".txt"),
+                        sb.toString().getBytes(StandardCharsets.UTF_8));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+            sb.setLength(0);
         }
     }
 
