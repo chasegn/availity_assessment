@@ -34,7 +34,22 @@ I consider it a great personal achievement that we were able to complete our wor
 Tell me about something you have read recently that you would recommend and why.
 (Can be a Github Repo, Article, Blog, Book, etc)
 
-TODO
+A hyper-recent post I read looked into utilizing a new API introduced in Java 16 to work a familiar problem. 
+The API is the new Vector API (jdk.incubator.vector) and the author looked at implementing a SIMD (single instruction, multiple data) solution for FizzBuzz.
+I'll admit that a good bit of the discourse is well above me, but I found it enlightening and humorous to follow the author's process.
+Enlightening because he used a well-understood problem to demonstrate a high-level concept and provide an easy-to-follow example for a high-performance operation.
+Humorous because it feels like a tremendously over-engineered solution to a simple problem.
+
+https://www.morling.dev/blog/fizzbuzz-simd-style/
+
+What I can understand about this is that it's a novel way to parallelize what's traditionally (at least for Java solutions I've seen) handled sequentially.
+Since the Vector API works with numerical generics (e.g. Integer, Short), he substitutes -1, -2, and -3 for FIZZ, BUZZ, and FIZZBUZZ.
+The Vector API also doesn't have an operation like modulo, so he leverages a masking strategy.
+He sets up just enough masks to cover the possible 3/5/3&5 combinations for the range of integers he runs against.
+He then demonstrates multiple ways to run through this operation and reports the benchmarks of his system. 
+He finds that the Vector API is able to distribute his calculations to finish them 4-8x faster than running through them sequentially.
+
+The benefit of this experiment shows a few interesting tricks to squeeze performance out of a simple problem, what kind of use case a future API fits, and how one might expect it to behave given a known domain.
 
 ==============================================
 
