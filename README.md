@@ -55,7 +55,11 @@ The benefit of this experiment shows a few interesting tricks to squeeze perform
 
 How would you explain what Availity does to your grandmother?
 
-TODO
+Availity is a company that provides software and services to healthcare providers and insurance companies. 
+The software helps the two talk together in a way that each can understand without having to learn completely different ways of talking.
+Providers can also use Availity to help collect payments from customers, organize paperwork about services provided and costs incurred.
+Insurers can also use Availity to help communicate information about benefits and coverage changes.
+All of this is handled online and by computers so that there can be fewer errors and the work can be done faster to let people on either side focus on doing more people stuff.
 
 ==============================================
 
