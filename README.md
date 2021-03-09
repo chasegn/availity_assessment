@@ -6,7 +6,28 @@ Submission key:
 Tell me about your proudest professional achievement. It can also be a personal or
 school project.
 
-TODO
+
+While I was at Wells Fargo, my team encountered a production outage caused by an overload of large messages being sent rapidly. 
+We spent most of that day and almost all of that night triaging the issue and building an emergency patch. 
+This temporary fix prevented further outages until we could build and test a full release to include the fix as well as other safety measures.
+
+The problem began when one of our message producing customers gradually ramped the size of their XML messages to around 25MB.
+Against our design and without our involvement, they would send us one copy of each of these messages about every ten seconds to each of their handful of downstream environments.
+This exposed a design flaw in our system around persisting incomplete message processing. 
+
+Our workflow was designed to persist incomplete messages at various points where there was a likelihood of failure.
+The persisted message would then be rolled back for another thread or processing node to pick up the incomplete message to try again.
+The design flaw was that if the persistence operation went on long enough, the remaining threads of that processing node would also be halted, causing a bottleneck where high-priority messages couldn't get through.
+Some of these high-priority messages getting delayed resulted in regulatory fines being assessed to the firm, which generated tremendous attention.
+A further flaw was discovered that our workflow included unnecessary persistence steps, nearly doubling the amount of dead time per workflow instance.
+
+I was tasked with researching this and trying to manage the message flow while my manager was pulled into root cause analysis calls and received berating from higher managers and traders from the floor.
+I discovered the unnecessary persistence steps and also captured timing data that showed how the blockage would occur across the entire processing node.
+
+My manager and I worked into the night building a temporary solution and planning the future permanent one. 
+We tightened our workflow, put in a safety mechanism that would allow other threads to continue processing, and built in some better analytics reporting to catch potential issues like this faster. 
+I learned a great deal about managing high-profile outages, including brevity of communication by audience, not getting distracted by shifting blame particularly when your system has problems to fix, and understanding that severe issues like this require tremendous effort to work through when they're allowed to happen. 
+I consider it a great personal achievement that we were able to complete our work in such a quick timeframe and that I was able to rise to the occasion to be there to get the job done.
 
 ==============================================
 
