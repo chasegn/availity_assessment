@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -26,17 +27,25 @@ public class CSVHarvester {
     }
 
     public void writeFiles() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmdd");
         StringBuilder sb = new StringBuilder();
-        for (Map.Entry<String, Map<String, EnrollmentRecord>> submap : insuranceCompanyRecords.entrySet()) {
+        String path = "src/main/resources/output/";
+        String filename;
 
+        for (Map.Entry<String, Map<String, EnrollmentRecord>> submap : insuranceCompanyRecords.entrySet()) {
+            // Iterate across collections of records.
+            // For each insurance company grouping...
             for (Map.Entry<String, EnrollmentRecord> entry : submap.getValue().entrySet()) {
+                // Write out the value of collected records, one per line
                 sb.append(entry.getValue().toString());
                 sb.append("\n");
             }
 
+            filename = submap.getKey() + "-" + sdf.format(System.currentTimeMillis()) + ".txt";
+
             try {
                 Files.write(
-                        Paths.get("src/main/resources/output/" + submap.getKey() + ".txt"),
+                        Paths.get(path + filename),
                         sb.toString().getBytes(StandardCharsets.UTF_8));
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -45,10 +54,6 @@ public class CSVHarvester {
             sb.setLength(0);
         }
     }
-
-
-    // Comparator<EnrollmentRecord> nameComparator = Comparator.comparing(EnrollmentRecord::getLname);
-    // Collections.sort(<list of user records per company>, nameComparator);
 
     public static void main(String[] args) {
         CSVHarvester harvester = new CSVHarvester();
