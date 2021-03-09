@@ -42,7 +42,11 @@ for basic data validation. The following data points should be collected:
 - Telephone Number
 - Email address
 
-TODO
+availity-registration/src
+
+cd availity-registration
+npm run build
+npm start
 
 ==============================================
 
