@@ -1,0 +1,61 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+}
+
+body {
+  background-color: #282c34;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-form {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: contents;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(16px);
+  color: white;
+}
+
+.success-message {
+  background: #00ff00 !important;
+  border-radius: 0 !important;
+  position: relative;
+  display: inline-block !important;
+  margin-top: 10px;
+  color: black;
+  font-size: calc(26px);
+}
+
+.entry-error {
+  background: #ff0000 !important;
+  border-radius: 0 !important;
+  position: relative;
+  display: inline-block !important;
+  margin-top: 10px;
+}
+
+.last-name-error {
+
+}
+
+.npi-number-error {
+
+}
+
+.business-address-error {
+
+}
+
+.phone-number-error {
+
+}
+
+.email-address-error {
+
+}
